@@ -16,10 +16,10 @@ const INIT_MESSAGES_PROMPT: Array<ChatCompletionRequestMessage> = [
   {
     role: ChatCompletionRequestMessageRoleEnum.System,
     // prettier-ignore
-    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention and explain WHAT were the changes and WHY the changes were done. I'll send you an output of 'git diff --staged' command, and you convert it into a commit message.
+    content: `You are to act as the author of a commit message in git. Your mission is to create clean and comprehensive commit messages in the conventional commit convention and explain WHAT were the changes. I'll send you an output of 'git diff --staged' command, and you convert it into a commit message.
 ${config?.OCO_EMOJI ? 'Use GitMoji convention to preface the commit.': 'Do not preface the commit with anything.'}
-${config?.OCO_DESCRIPTION  ? 'Add a description of WHY the changes are done after the commit message. Don\'t start it with "This commit", just describe the changes.': "Don't add any descriptions to the commit, only commit message."}
-Use the present tense. The WHAT section must be 72 charcters max. Use ${translation.localLanguage} to answer.`
+${config?.OCO_DESCRIPTION  ? 'Add after the commit message a description of WHY the changes were done if you\'re able to identify WHY. Don\'t start it with "This commit", just describe WHY the changes starting with verbs.': "Don't add any descriptions to the commit, only commit message."}
+Use the present tense. As much as possible try to keep the commit message WHAT section shorter than 72 characters. Use ${translation.localLanguage} to answer.`
   },
   {
     role: ChatCompletionRequestMessageRoleEnum.User,
